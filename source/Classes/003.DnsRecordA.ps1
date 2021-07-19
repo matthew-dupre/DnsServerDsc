@@ -55,6 +55,7 @@ class DnsRecordA : DnsRecordBase
         }
 
         $record = Get-DnsServerResourceRecord @dnsParameters -ErrorAction SilentlyContinue | Where-Object {
+            #$_.HostName -eq $this.Name -and
             $_.RecordData.IPv4Address -eq $this.IPv4Address
         }
 

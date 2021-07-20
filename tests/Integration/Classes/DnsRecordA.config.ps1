@@ -25,12 +25,12 @@ $ConfigurationData = @{
             IPv4Address = '192.168.50.10'
             Ensure      = 'Absent'
         }
-        DnsRecordA_CreateStarRecord_Config = @{
+        DnsRecordA_CreateWildcardRecord_Config = @{
             ZoneName    = $zoneName
             Name        = '*'
             IPv4Address = '192.168.50.10'
         }
-        DnsRecordA_ModifyStarRecord_Config = @{
+        DnsRecordA_ModifyWildcardRecord_Config = @{
             ZoneName    = $zoneName
             Name        = '*'
             IPv4Address = '192.168.50.10'
@@ -38,18 +38,18 @@ $ConfigurationData = @{
             TimeToLive  = '05:00:00'
             Ensure      = 'Present'
         }
-        DnsRecordA_DeleteStarRecord_Config = @{
+        DnsRecordA_DeleteWildcardRecord_Config = @{
             ZoneName    = $zoneName
             Name        = '*'
             IPv4Address = '192.168.50.10'
             Ensure      = 'Absent'
         }
-        DnsRecordA_CreateNakedRecord_Config = @{
+        DnsRecordA_CreateRootRecord_Config = @{
             ZoneName    = $zoneName
             Name        = '@'
             IPv4Address = '192.168.50.10'
         }
-        DnsRecordA_ModifyNakedRecord_Config = @{
+        DnsRecordA_ModifyRootRecord_Config = @{
             ZoneName    = $zoneName
             Name        = '@'
             IPv4Address = '192.168.50.10'
@@ -57,7 +57,7 @@ $ConfigurationData = @{
             TimeToLive  = '05:00:00'
             Ensure      = 'Present'
         }
-        DnsRecordA_DeleteNakedRecord_Config = @{
+        DnsRecordA_DeleteRootRecord_Config = @{
             ZoneName    = $zoneName
             Name        = '@'
             IPv4Address = '192.168.50.10'
@@ -146,7 +146,7 @@ configuration DnsRecordA_DeleteRecord_Config
     .SYNOPSIS
         Create a 'Naked' A record
 #>
-configuration DnsRecordA_CreateNakedRecord_Config
+configuration DnsRecordA_CreateRootRecord_Config
 {
     Import-DscResource -ModuleName 'DnsServerDsc'
 
@@ -159,9 +159,9 @@ configuration DnsRecordA_CreateNakedRecord_Config
 
         DnsRecordA 'Integration_Test'
         {
-            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_CreateNakedRecord_Config.ZoneName
-            Name        = $ConfigurationData.NonNodeData.DnsRecordA_CreateNakedRecord_Config.Name
-            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_CreateNakedRecord_Config.IPv4Address
+            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_CreateRootRecord_Config.ZoneName
+            Name        = $ConfigurationData.NonNodeData.DnsRecordA_CreateRootRecord_Config.Name
+            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_CreateRootRecord_Config.IPv4Address
         }
     }
 }
@@ -170,7 +170,7 @@ configuration DnsRecordA_CreateNakedRecord_Config
     .SYNOPSIS
         Modifies an existing 'Naked' A record
 #>
-configuration DnsRecordA_ModifyNakedRecord_Config
+configuration DnsRecordA_ModifyRootRecord_Config
 {
     Import-DscResource -ModuleName 'DnsServerDsc'
 
@@ -183,12 +183,12 @@ configuration DnsRecordA_ModifyNakedRecord_Config
 
         DnsRecordA 'Integration_Test'
         {
-            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_ModifyNakedRecord_Config.ZoneName
-            Name        = $ConfigurationData.NonNodeData.DnsRecordA_ModifyNakedRecord_Config.Name
-            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_ModifyNakedRecord_Config.IPv4Address
-            DnsServer   = $ConfigurationData.NonNodeData.DnsRecordA_ModifyNakedRecord_Config.DnsServer
-            TimeToLive  = $ConfigurationData.NonNodeData.DnsRecordA_ModifyNakedRecord_Config.TimeToLive
-            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_ModifyNakedRecord_Config.Ensure
+            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_ModifyRootRecord_Config.ZoneName
+            Name        = $ConfigurationData.NonNodeData.DnsRecordA_ModifyRootRecord_Config.Name
+            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_ModifyRootRecord_Config.IPv4Address
+            DnsServer   = $ConfigurationData.NonNodeData.DnsRecordA_ModifyRootRecord_Config.DnsServer
+            TimeToLive  = $ConfigurationData.NonNodeData.DnsRecordA_ModifyRootRecord_Config.TimeToLive
+            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_ModifyRootRecord_Config.Ensure
         }
     }
 }
@@ -197,7 +197,7 @@ configuration DnsRecordA_ModifyNakedRecord_Config
     .SYNOPSIS
         Deletes an existing Naked A record
 #>
-configuration DnsRecordA_DeleteNakedRecord_Config
+configuration DnsRecordA_DeleteRootRecord_Config
 {
     Import-DscResource -ModuleName 'DnsServerDsc'
 
@@ -210,10 +210,10 @@ configuration DnsRecordA_DeleteNakedRecord_Config
 
         DnsRecordA 'Integration_Test'
         {
-            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_DeleteNakedRecord_Config.ZoneName
-            Name        = $ConfigurationData.NonNodeData.DnsRecordA_DeleteNakedRecord_Config.Name
-            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_DeleteNakedRecord_Config.IPv4Address
-            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_DeleteNakedRecord_Config.Ensure
+            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_DeleteRootRecord_Config.ZoneName
+            Name        = $ConfigurationData.NonNodeData.DnsRecordA_DeleteRootRecord_Config.Name
+            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_DeleteRootRecord_Config.IPv4Address
+            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_DeleteRootRecord_Config.Ensure
         }
     }
 }
@@ -222,7 +222,7 @@ configuration DnsRecordA_DeleteNakedRecord_Config
     .SYNOPSIS
         Create a 'Star' A record
 #>
-configuration DnsRecordA_CreateStarRecord_Config
+configuration DnsRecordA_CreateWildcardRecord_Config
 {
     Import-DscResource -ModuleName 'DnsServerDsc'
 
@@ -235,9 +235,9 @@ configuration DnsRecordA_CreateStarRecord_Config
 
         DnsRecordA 'Integration_Test'
         {
-            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_CreateStarRecord_Config.ZoneName
-            Name        = $ConfigurationData.NonNodeData.DnsRecordA_CreateStarRecord_Config.Name
-            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_CreateStarRecord_Config.IPv4Address
+            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_CreateWildcardRecord_Config.ZoneName
+            Name        = $ConfigurationData.NonNodeData.DnsRecordA_CreateWildcardRecord_Config.Name
+            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_CreateWildcardRecord_Config.IPv4Address
         }
     }
 }
@@ -246,7 +246,7 @@ configuration DnsRecordA_CreateStarRecord_Config
     .SYNOPSIS
         Modifies an existing 'Naked' A record
 #>
-configuration DnsRecordA_ModifyStarRecord_Config
+configuration DnsRecordA_ModifyWildcardRecord_Config
 {
     Import-DscResource -ModuleName 'DnsServerDsc'
 
@@ -259,12 +259,12 @@ configuration DnsRecordA_ModifyStarRecord_Config
 
         DnsRecordA 'Integration_Test'
         {
-            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_ModifyStarRecord_Config.ZoneName
-            Name        = $ConfigurationData.NonNodeData.DnsRecordA_ModifyStarRecord_Config.Name
-            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_ModifyStarRecord_Config.IPv4Address
-            DnsServer   = $ConfigurationData.NonNodeData.DnsRecordA_ModifyStarRecord_Config.DnsServer
-            TimeToLive  = $ConfigurationData.NonNodeData.DnsRecordA_ModifyStarRecord_Config.TimeToLive
-            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_ModifyStarRecord_Config.Ensure
+            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_ModifyWildcardRecord_Config.ZoneName
+            Name        = $ConfigurationData.NonNodeData.DnsRecordA_ModifyWildcardRecord_Config.Name
+            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_ModifyWildcardRecord_Config.IPv4Address
+            DnsServer   = $ConfigurationData.NonNodeData.DnsRecordA_ModifyWildcardRecord_Config.DnsServer
+            TimeToLive  = $ConfigurationData.NonNodeData.DnsRecordA_ModifyWildcardRecord_Config.TimeToLive
+            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_ModifyWildcardRecord_Config.Ensure
         }
     }
 }
@@ -273,7 +273,7 @@ configuration DnsRecordA_ModifyStarRecord_Config
     .SYNOPSIS
         Deletes an existing Naked A record
 #>
-configuration DnsRecordA_DeleteStarRecord_Config
+configuration DnsRecordA_DeleteWildcardRecord_Config
 {
     Import-DscResource -ModuleName 'DnsServerDsc'
 
@@ -286,10 +286,10 @@ configuration DnsRecordA_DeleteStarRecord_Config
 
         DnsRecordA 'Integration_Test'
         {
-            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_DeleteStarRecord_Config.ZoneName
-            Name        = $ConfigurationData.NonNodeData.DnsRecordA_DeleteStarRecord_Config.Name
-            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_DeleteStarRecord_Config.IPv4Address
-            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_DeleteStarRecord_Config.Ensure
+            ZoneName    = $ConfigurationData.NonNodeData.DnsRecordA_DeleteWildcardRecord_Config.ZoneName
+            Name        = $ConfigurationData.NonNodeData.DnsRecordA_DeleteWildcardRecord_Config.Name
+            IPv4Address = $ConfigurationData.NonNodeData.DnsRecordA_DeleteWildcardRecord_Config.IPv4Address
+            Ensure      = $ConfigurationData.NonNodeData.DnsRecordA_DeleteWildcardRecord_Config.Ensure
         }
     }
 }

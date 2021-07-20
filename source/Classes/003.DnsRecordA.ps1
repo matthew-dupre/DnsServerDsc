@@ -54,8 +54,7 @@ class DnsRecordA : DnsRecordBase
             $dnsParameters['ZoneScope'] = $this.ZoneScope
         }
 
-        $record = Get-DnsServerResourceRecord @dnsParameters -ErrorAction SilentlyContinue | Where-Object {
-            $_.HostName -eq $this.Name -and
+        $record = Get-DnsServerResourceRecord @dnsParameters -ErrorAction SilentlyContinue -Node | Where-Object {
             $_.RecordData.IPv4Address -eq $this.IPv4Address
         }
 
